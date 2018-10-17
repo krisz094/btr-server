@@ -22,6 +22,7 @@ module.exports = {
     // public key in the view locals.  Otherwise, leave it as undefined.
     return exits.success({
       stripePublishableKey: sails.config.custom.enableBillingFeatures? sails.config.custom.stripePublishableKey : undefined,
+      fefe: 'meme'
     });
 
   }

@@ -50,9 +50,9 @@ module.exports.routes = {
   'POST  /api/v1/entrance/update-password-and-login': { action: 'entrance/update-password-and-login' },
   'POST  /api/v1/deliver-contact-form-message': { action: 'deliver-contact-form-message' },
   
-  'GET /muser/add': 'MuserController.add',
   'GET /muser/list': 'MuserController.list',
-  'GET /muser/send-clicks': 'MuserController.sendClicks',
+  'POST /muser/add': 'MuserController.add',
+  'POST /muser/send-clicks': 'MuserController.sendClicks',  
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
