@@ -59,6 +59,12 @@ module.exports = {
       //  ```
       //--------------------------------------------------------------------------
 
+      adapter: 'sails-mongo',
+      url: 'mongodb://btr:' +
+        process.env.MONGO_PW +
+        '@btrcluster-shard-00-00-0fpr8.gcp.mongodb.net:27017,btrcluster-shard-00-01-0fpr8.gcp.mongodb.net:27017,btrcluster-shard-00-02-0fpr8.gcp.mongodb.net:27017/btrtest?ssl=true&replicaSet=btrcluster-shard-0&authSource=admin&retryWrites=true'
+
+
       /****************************************************************************
       *                                                                           *
       * More adapter-specific options                                             *
@@ -184,8 +190,11 @@ module.exports = {
     * > (For a full list, see https://sailsjs.com/plugins/sessions)            *
     *                                                                          *
     ***************************************************************************/
-    // adapter: '@sailshq/connect-redis',
-    // url: 'redis://user:password@localhost:6379/databasenumber',
+    adapter: '@sailshq/connect-redis',
+    url: 'redis://10.0.0.3:6379/3',
+    host: '10.0.0.3',
+    port: 6379,
+    db: 3,
     //--------------------------------------------------------------------------
     // /\   OR, to avoid checking it in to version control, you might opt to
     // ||   set sensitive credentials like this using an environment variable.
@@ -196,6 +205,7 @@ module.exports = {
     // ```
     //
     //--------------------------------------------------------------------------
+
 
 
 
@@ -221,7 +231,7 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     cookie: {
-      // secure: true,
+      secure: true,
       maxAge: 24 * 60 * 60 * 1000,  // 24 hours
     },
 
@@ -250,10 +260,10 @@ module.exports = {
     * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
     *                                                                          *
     ***************************************************************************/
-    // onlyAllowOrigins: [
-    //   'https://example.com',
-    //   'https://staging.example.com',
-    // ],
+    onlyAllowOrigins: [
+      'https://betherichest-1994.appspot.com',
+      'http://betherichest-1994.appspot.com',
+    ],
 
 
     /***************************************************************************
@@ -305,7 +315,8 @@ module.exports = {
     * (the "max-age" to include in the "Cache-Control" response header)        *
     *                                                                          *
     ***************************************************************************/
-    cache: 365.25 * 24 * 60 * 60 * 1000, // One year
+    //cache: 365.25 * 24 * 60 * 60 * 1000, // One year
+    cache: 1000,
 
     /***************************************************************************
     *                                                                          *
@@ -322,7 +333,7 @@ module.exports = {
     * (https://sailsjs.com/config/http)                                        *
     *                                                                          *
     ***************************************************************************/
-    // trustProxy: true,
+    trustProxy: true,
 
   },
 
@@ -371,8 +382,8 @@ module.exports = {
   *                                                                         *
   ***************************************************************************/
   custom: {
-    baseUrl: 'https://example.com',
-    internalEmailAddress: 'support@example.com',
+    baseUrl: 'https://betherichest-1994.appspot.com',
+    internalEmailAddress: 'rsrlz94@gmail.com',
 
     // mailgunDomain: 'mg.example.com',
     // mailgunSecret: 'key-prod_fake_bd32301385130a0bafe030c',
