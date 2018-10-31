@@ -2,12 +2,12 @@
 
 a [Sails v1](https://sailsjs.com) application
 
-runtime: nodejs
-env: flex
-
 * ```app.yaml``` format:
 
 ```
+runtime: nodejs
+env: flex
+
 # The following env variables may contain sensitive information that grants
 # anyone access to your database. Do not add this file to your source control.
 env_variables:
