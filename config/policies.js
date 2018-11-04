@@ -17,6 +17,12 @@ module.exports.policies = {
   'account/logout': true,
   'view-homepage-or-redirect': true,
   'deliver-contact-form-message': true,
-  'muser/*': true
+
+  MuserController: {
+    '*': 'isJWTAuthenticated',
+    login: true,
+    register: true,
+    list: true
+  }
 
 };

@@ -13,8 +13,14 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
-    macAddress: {
-      type: 'string'
+    email: {
+      type: 'string',
+      unique: true,
+      required: true
+    },
+    password: {
+      type: 'string',
+      required: true
     },
 
 
