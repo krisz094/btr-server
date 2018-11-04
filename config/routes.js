@@ -49,10 +49,21 @@ module.exports.routes = {
   'POST  /api/v1/entrance/send-password-recovery-email': { action: 'entrance/send-password-recovery-email' },
   'POST  /api/v1/entrance/update-password-and-login': { action: 'entrance/update-password-and-login' },
   'POST  /api/v1/deliver-contact-form-message': { action: 'deliver-contact-form-message' },
-  
-  'GET /muser/list': 'MuserController.list',
-  'POST /muser/add': 'MuserController.add',
-  'POST /muser/send-clicks': 'MuserController.sendClicks',  
+
+  // Mobile User
+  // debug
+  'GET /muser/list': 'MuserController.list', // debug
+  'POST /muser/add': 'MuserController.add', // debug
+  // Auth
+  'POST /muser/register': 'MuserController.register',
+  'POST /muser/login': 'MuserController.login',
+
+  // Status
+  'POST /muser/log-stats': 'MuserController.logStats',
+  'POST /muser/log-investment': 'MuserController.logInvestment',
+  'POST /muser/log-upgrade': 'MuserController.logUpgrade',
+  'POST /muser/log-gambling': 'MuserController.logGambling',
+  'POST /muser/log-ping': 'MuserController.logPing',
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗

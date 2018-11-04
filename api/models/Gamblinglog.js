@@ -1,5 +1,5 @@
 /**
- * Muser.js
+ * Gamblinglog.js
  *
  * @description :: A model definition.  Represents a database table/collection/etc.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -13,37 +13,21 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
-    macAddress: {
-      type: 'string'
-    },
-
+    gamblingId: { type: 'number', required: true },
+    gamblingWon: { type: 'boolean', required: true },
+    updatedAt: false,
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
 
+
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-    investmentLog: {
-      collection: 'investmentlog',
-      via: 'user'
-    },
-    gamblingLog: {
-      collection: 'gamblinglog',
-      via: 'user'
-    },
-    pingLog: {
-      collection: 'pinglog',
-      via: 'user'
-    },
-    statsLog: {
-      collection: 'statslog',
-      via: 'user'
-    },
-    upgradeLog: {
-      collection: 'upgradelog',
-      via: 'user'
+    user: {
+      model: 'muser',
+      required: true
     }
   },
 
