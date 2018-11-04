@@ -20,7 +20,7 @@ module.exports = {
     return res.ok(users);
   },
   register: async (req, res) => {
-    return res.notFound({ message: 'unimplemented' });
+    return res.notFound({ message: 'unimplemented', other: 'AUTO DEPLOY TEST' });
   },
   login: async (req, res) => {
     return res.notFound({ message: 'unimplemented' });

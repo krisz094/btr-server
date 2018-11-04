@@ -55,7 +55,7 @@ module.exports.routes = {
   'GET /muser/list': 'MuserController.list', // debug
   'POST /muser/add': 'MuserController.add', // debug
   // Auth
-  'POST /muser/register': 'MuserController.register',
+  'POST /muser/register': 'MuserController.register', // auto deploy test
   'POST /muser/login': 'MuserController.login',
 
   // Status
