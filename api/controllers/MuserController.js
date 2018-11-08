@@ -5,11 +5,33 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
-var bcrypt = require('bcryptjs');
-var jwt = require('jsonwebtoken');
-var Emailaddresses = require('machinepack-emailaddresses');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const Emailaddresses = require('machinepack-emailaddresses');
+const { OAuth2Client } = require('google-auth-library');
+const CLIENT_ID = "155780683287-p64q8epo137pdbg32ldkabbvqivrb0ti.apps.googleusercontent.com";
 
 module.exports = {
+  tokenSignIn: async (req, res) => {
+    try {
+      const idToken = req.body.idToken;
+      const client = new OAuth2Client(CLIENT_ID);
+      const ticket = await client.verifyIdToken({
+        idToken,
+        audience: CLIENT_ID
+      });
+      const payload = ticket.getPayload();
+      const userid = payload['sub'];
+
+      console.log({ payload, userid })
+
+      res.ok({ payload, userid });
+    } catch (err) {
+      console.log(err);
+      res.badRequest(err);
+    }
+
+  },
   list: async (req, res) => {
     const users = await Muser.find()
       .populate('investmentLog')
@@ -70,27 +92,31 @@ module.exports = {
       },
       success: async function () {
         console.log(req.param('email'), req.body.email)
-        var user = await sails.helpers.createUser.with({
-          email: req.param('email'),
-          password: req.param('password'),
-        })
+        try {
+          var user = await sails.helpers.createUser.with({
+            email: req.param('email'),
+            password: req.param('password'),
+          })
 
-        // after creating a user record, log them in at the same time by issuing their first jwt token and setting a cookie
-        var token = jwt.sign({ user: user.id }, sails.config.JWTsecret, { expiresIn: sails.config.JWTexpires })
-        res.cookie('sailsjwt', token, {
-          signed: true,
-          // domain: '.yourdomain.com', // always use this in production to whitelist your domain
-          maxAge: sails.config.JWTexpires
-        })
+          // after creating a user record, log them in at the same time by issuing their first jwt token and setting a cookie
+          var token = jwt.sign({ user: user.id }, sails.config.JWTsecret, { expiresIn: sails.config.JWTexpires })
+          res.cookie('sailsjwt', token, {
+            signed: true,
+            // domain: '.yourdomain.com', // always use this in production to whitelist your domain
+            maxAge: sails.config.JWTexpires
+          })
 
-        // if this is not an HTML-wanting browser, e.g. AJAX/sockets/cURL/etc.,
-        // send a 200 response letting the user agent know the signup was successful.
-        if (req.wantsJSON) {
-          return res.ok(token)
+          // if this is not an HTML-wanting browser, e.g. AJAX/sockets/cURL/etc.,
+          // send a 200 response letting the user agent know the signup was successful.
+          if (req.wantsJSON) {
+            return res.ok(token)
+          }
+
+          // otherwise if this is an HTML-wanting browser, redirect to /welcome.
+          return res.redirect('/welcome')
+        } catch (err) {
+          res.badRequest(err);
         }
-
-        // otherwise if this is an HTML-wanting browser, redirect to /welcome.
-        return res.redirect('/welcome')
       }
     })
   },

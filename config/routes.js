@@ -58,6 +58,7 @@ module.exports.routes = {
   'PATCH /muser/login': 'MuserController.login',
   'PATCH /muser/logout': 'MuserController.logout',
   'POST /muser/register': 'MuserController.register',
+  'POST /muser/tokensignin': 'MuserController.tokenSignIn',
 
   // Status
   'POST /muser/log-stats': 'MuserController.logStats',

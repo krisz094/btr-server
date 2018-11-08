@@ -22,7 +22,8 @@ module.exports.policies = {
     '*': 'isJWTAuthenticated',
     login: true,
     register: true,
-    list: true
+    list: true,
+    tokenSignIn: true
   }
 
 };
