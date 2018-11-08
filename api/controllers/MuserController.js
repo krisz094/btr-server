@@ -25,7 +25,11 @@ module.exports = {
       return res.notFound();
     }
 
-    await bcrypt.compare(req.param('password'), user.password);
+    const pwvalid = await bcrypt.compare(req.param('password'), user.password);
+
+    if (!pwvalid) {
+      return res.badRequest({ message: 'invalid password' });
+    }
 
     var token = jwt.sign({ user: user.id }, sails.config.JWTsecret, { expiresIn: sails.config.JWTexpires });
 
