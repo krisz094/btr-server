@@ -22,7 +22,9 @@ module.exports = {
       type: 'string',
       required: true
     },
-
+    firstDollar: {
+      type: 'number'
+    },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
