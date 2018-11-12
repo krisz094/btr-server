@@ -10,6 +10,9 @@ const jwt = require('jsonwebtoken');
 const Emailaddresses = require('machinepack-emailaddresses');
 const { OAuth2Client } = require('google-auth-library');
 const CLIENT_ID = "155780683287-p64q8epo137pdbg32ldkabbvqivrb0ti.apps.googleusercontent.com";
+const getMuserFromReq = async (req) => {
+  return await Muser.findOne({ id: req.user.id });
+};
 
 module.exports = {
   tokenSignIn: async (req, res) => {
@@ -33,13 +36,18 @@ module.exports = {
 
   },
   list: async (req, res) => {
-    const users = await Muser.find()
-      .populate('investmentLog')
-      .populate('gamblingLog')
-      .populate('pingLog')
-      .populate('statsLog')
-      .populate('upgradeLog');
-    return res.ok(users);
+    try {
+      const users = await Muser.find()
+        .populate('investmentLog')
+        .populate('gamblingLog')
+        .populate('pingLog')
+        .populate('statsLog')
+        .populate('upgradeLog');
+      return res.ok(users);
+    }
+    catch (err) {
+      return res.badRequest(err);
+    }
   },
   login: async (req, res) => {
     var user = await Muser.findOne({ email: req.param('email') });
@@ -64,9 +72,14 @@ module.exports = {
     return res.ok(token);
   },
   logout: async (req, res) => {
-    res.clearCookie('sailsjwt');
-    req.user = null;
-    return res.ok();
+    try {
+      res.clearCookie('sailsjwt');
+      req.user = null;
+      return res.ok();
+    }
+    catch (err) {
+      return res.badRequest(err);
+    }
   },
   register: async (req, res) => {
     if (_.isUndefined(req.param('email'))) {
@@ -123,10 +136,10 @@ module.exports = {
   logStats: async (req, res) => {
     try {
       const rb = req.body;
-      const user = await Muser.find().limit(1);
+      const user = await getMuserFromReq(req);
       const statsLog = await Statslog.create({
         ...rb,
-        user: user[0].id
+        user: user.id
       }).fetch();
       return res.ok({ user, statsLog });
     }
@@ -137,10 +150,10 @@ module.exports = {
   logInvestment: async (req, res) => {
     try {
       const rb = req.body;
-      const user = await Muser.find().limit(1);
+      const user = await getMuserFromReq(req);
       const investmentLog = await Investmentlog.create({
         ...rb,
-        user: user[0].id
+        user: user.id
       }).fetch();
 
       return res.ok({ user, investmentLog });
@@ -152,10 +165,10 @@ module.exports = {
   logUpgrade: async (req, res) => {
     try {
       const rb = req.body;
-      const user = await Muser.find().limit(1);
+      const user = await getMuserFromReq(req);
       const upgradeLog = await Upgradelog.create({
         ...rb,
-        user: user[0].id
+        user: user.id
       }).fetch();
 
       return res.ok({ user, upgradeLog });
@@ -167,10 +180,10 @@ module.exports = {
   logGambling: async (req, res) => {
     try {
       const rb = req.body;
-      const user = await Muser.find().limit(1);
+      const user = await getMuserFromReq(req);
       const gamblingLog = await Gamblinglog.create({
         ...rb,
-        user: user[0].id
+        user: user.id
       }).fetch();
 
       return res.ok({ user, gamblingLog });
@@ -182,10 +195,10 @@ module.exports = {
   logPing: async (req, res) => {
     try {
       const rb = req.body;
-      const user = await Muser.find().limit(1);
+      const user = await getMuserFromReq(req);
       const pingLog = await Pinglog.create({
         ...rb,
-        user: user[0].id
+        user: user.id
       }).fetch();
 
       return res.ok({ user, pingLog });
