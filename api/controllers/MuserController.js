@@ -18,15 +18,16 @@ module.exports = {
   tokenSignIn: async (req, res) => {
     try {
       const idToken = req.body.idToken;
+      sails.log(idToken);
       const client = new OAuth2Client(CLIENT_ID);
       const ticket = await client.verifyIdToken({
         idToken,
         audience: CLIENT_ID
       });
       const payload = ticket.getPayload();
+      sails.log(payload)
       const gEmail = payload.email;
       const gUniqueId = payload.sub;
-      console.log({ payload })
 
       // see if user is in the database
       // if user is: just pass back bearer token ("login")
@@ -46,7 +47,7 @@ module.exports = {
       }
 
     } catch (err) {
-      console.log(err);
+      sails.log(err);
       res.badRequest(err);
     }
 
@@ -120,7 +121,7 @@ module.exports = {
         return res.badRequest('Doesn\'t look like an email address.')
       },
       success: async function () {
-        console.log(req.param('email'), req.body.email)
+        sails.log(req.param('email'), req.body.email)
         try {
           var user = await sails.helpers.createUser.with({
             email: req.param('email'),
