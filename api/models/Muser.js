@@ -20,10 +20,9 @@ module.exports = {
     },
     password: {
       type: 'string',
-      required: true
     },
-    firstDollar: {
-      type: 'number'
+    googleUniqueId: {
+      type: 'string'
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

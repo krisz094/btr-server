@@ -24,11 +24,27 @@ module.exports = {
         audience: CLIENT_ID
       });
       const payload = ticket.getPayload();
-      const userid = payload['sub'];
+      const gEmail = payload.email;
+      const gUniqueId = payload.sub;
+      console.log({ payload })
 
-      console.log({ payload, userid })
+      // see if user is in the database
+      // if user is: just pass back bearer token ("login")
+      const user = await Muser.findOne({ googleUniqueId: gUniqueId });
+      if (user) {
+        const token = jwt.sign({ user: user.id }, sails.config.JWTsecret, { expiresIn: sails.config.JWTexpires });
+        return res.ok(token);
+      }
+      // if user is not: create user and pass back bearer token ("register")
+      else {
+        const newUser = await Muser.create({
+          email: gEmail,
+          googleUniqueId: gUniqueId
+        }).fetch();
+        const token = jwt.sign({ user: newUser.id }, sails.config.JWTsecret, { expiresIn: sails.config.JWTexpires });
+        return res.ok(token);
+      }
 
-      res.ok({ payload, userid });
     } catch (err) {
       console.log(err);
       res.badRequest(err);
@@ -63,11 +79,11 @@ module.exports = {
 
     var token = jwt.sign({ user: user.id }, sails.config.JWTsecret, { expiresIn: sails.config.JWTexpires });
 
-    res.cookie('sailsjwt', token, {
+    /* res.cookie('sailsjwt', token, {
       signed: true,
       domain: 'betherichest-1994.appspot.com',
       maxAge: sails.config.JWTexpires
-    });
+    }); */
 
     return res.ok(token);
   },
@@ -113,11 +129,11 @@ module.exports = {
 
           // after creating a user record, log them in at the same time by issuing their first jwt token and setting a cookie
           var token = jwt.sign({ user: user.id }, sails.config.JWTsecret, { expiresIn: sails.config.JWTexpires })
-          res.cookie('sailsjwt', token, {
+          /* res.cookie('sailsjwt', token, {
             signed: true,
             // domain: '.yourdomain.com', // always use this in production to whitelist your domain
             maxAge: sails.config.JWTexpires
-          })
+          }) */
 
           // if this is not an HTML-wanting browser, e.g. AJAX/sockets/cURL/etc.,
           // send a 200 response letting the user agent know the signup was successful.
