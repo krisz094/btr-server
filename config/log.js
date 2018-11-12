@@ -10,6 +10,48 @@
  * https://sailsjs.com/docs/concepts/logging
  */
 
+const winston = require('winston');
+const format = winston.format;
+const logger = winston.createLogger({
+  transports: [
+    new winston.transports.Console({
+      format: format.simple(),
+      level: 'debug'
+    }),
+    new winston.transports.File({
+      filename: 'combined.log',
+      format: format.simple(),
+      level: 'warn'
+    })
+  ]
+});
+
+class logTranslate {
+  error(msg) {
+    logger.error(msg);
+  }
+  warn(msg) {
+    logger.warn(msg);
+  }
+  info(msg) {
+    logger.info(msg);
+  }
+  verbose(msg) {
+    logger.verbose(msg);
+  }
+  debug(msg) {
+    logger.debug(msg);
+  }
+  silly(msg) {
+    logger.silly(msg);
+  }
+  log(msg) {
+    logger.debug(msg);
+  }
+}
+
+const tran = new logTranslate();
+
 module.exports.log = {
 
   /***************************************************************************
@@ -24,6 +66,11 @@ module.exports.log = {
   *                                                                          *
   ***************************************************************************/
 
-  // level: 'info'
+  // Pass in our custom logger, and pass all log levels through.
+  custom: tran,
+  level: 'silly',
+
+  // Disable captain's log so it doesn't prefix or stringify our meta data.
+  inspect: false
 
 };
