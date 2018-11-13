@@ -38,7 +38,6 @@ module.exports = {
 		var res = inputs.res;
 		// first check for a cookie (web client)
 		if (req.signedCookies.sailsjwt) {
-			sails.log('süti');
 			// if there is something, attempt to parse it as a JWT token
 			return jwt.verify(req.signedCookies.sailsjwt, sails.config.JWTsecret, async function(err, payload) {
 				// if there's an error verifying the token (e.g. it's invalid or expired), no go
@@ -54,7 +53,6 @@ module.exports = {
 		}
 		// no? then check for a JWT token in the header
 		if (req.header('authorization')) {
-			sails.log('auth token');
 			// if one exists, attempt to get the header data
 			var token = req.header('authorization').split('Bearer ')[1]
 			// if there's nothing after "Bearer", no go
