@@ -39,7 +39,6 @@ module.exports = {
 
     if (inputs.password) {
       attr.password = await bcrypt.hash(inputs.password, 10)
-      sails.log(attr);
       var user = await Muser.create(attr)
         .intercept('E_UNIQUE', () => 'emailAddressAlreadyInUse')
         .intercept({ name: 'UsageError' }, () => 'invalid')

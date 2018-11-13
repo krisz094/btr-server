@@ -120,7 +120,6 @@ module.exports = {
         return res.badRequest('Doesn\'t look like an email address.')
       },
       success: async function () {
-        sails.log(req.param('email'), req.body.email)
         try {
           var user = await sails.helpers.createUser.with({
             email: req.param('email'),
