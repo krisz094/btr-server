@@ -66,11 +66,11 @@ module.exports.log = {
   *                                                                          *
   ***************************************************************************/
 
-  /* // Pass in our custom logger, and pass all log levels through.
+  // Pass in our custom logger, and pass all log levels through.
   custom: tran,
   level: 'silly',
 
   // Disable captain's log so it doesn't prefix or stringify our meta data.
-  inspect: false */
+  inspect: false
 
 };
