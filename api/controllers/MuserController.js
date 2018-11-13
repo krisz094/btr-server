@@ -9,7 +9,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const Emailaddresses = require('machinepack-emailaddresses');
 const { OAuth2Client } = require('google-auth-library');
-const CLIENT_ID = "155780683287-p64q8epo137pdbg32ldkabbvqivrb0ti.apps.googleusercontent.com";
+const CLIENT_ID = "155780683287-uq121kn0cfmipsjgotumobb2eau99b2a.apps.googleusercontent.com";
 const getMuserFromReq = async (req) => {
   return await Muser.findOne({ id: req.user.id });
 };
