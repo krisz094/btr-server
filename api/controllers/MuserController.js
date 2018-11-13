@@ -25,7 +25,7 @@ module.exports = {
         audience: CLIENT_ID
       });
       const payload = ticket.getPayload();
-      sails.log(payload)
+      sails.log(JSON.stringify(payload))
       const gEmail = payload.email;
       const gUniqueId = payload.sub;
 
