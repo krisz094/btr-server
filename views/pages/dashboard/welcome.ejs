@@ -21,14 +21,28 @@
       <div id="gambling" class="col-md-6">
         <div class="inner">
           <h5>Gambling stats</h5>
-          <h6>All gambles</h6>
-          <%= allGambles %>
-          <hr>
-          <h6>Gambles this week by day</h6>
-          <%= last7DaysGambles %>
-          <hr>
-          <h6>Gambles previous week</h6>
-          <%= previousWeekGambles %>
+          <div class="row">
+            <div class="col-md-6">
+              <h6>All gambles</h6>
+              <%= allGambles %>
+              <hr>
+              <h6>Gambles this week by day</h6>
+              <%= last7DaysGambles %>
+              <hr>
+              <h6>Gambles previous week</h6>
+              <%= previousWeekGambles %>
+            </div>
+            <div class="col-md-6">
+              <h6>All gambles won</h6>
+              <%= allGamblesWon %>
+              <hr>
+              <h6>Gambles won this week by day</h6>
+              <%= last7DaysGamblesWon %>
+              <hr>
+              <h6>Gambles won previous week</h6>
+              <%= previousWeekGamblesWon %>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -96,15 +110,32 @@
       <div id="money-source" class="col-md-6">
         <div class="inner">
           <h5>Money source kördiagram: click/investment/gambling</h5>
-
+          <ul>
+            <li>
+              Gambling:
+              <%= gamblingMoney %>
+            </li>
+            <li>
+              Clicks:
+              <%= clicksMoney %>
+            </li>
+            <li>
+              Videos:
+              <%= videosMoney %>
+            </li>
+            <li>
+              Investments:
+              <%= investmentsMoney %>
+            </li>
+          </ul>
 
         </div>
       </div>
 
       <div id="click-count" class="col-md-6">
         <div class="inner">
-          <h5>Játékosok kattintásszáma</h5>
-
+          <h5>Investment max levels</h5>
+          <h6>TODO</h6>
 
         </div>
       </div>
@@ -112,11 +143,16 @@
 
       <div id="playtime" class="col-md-6">
         <div class="inner">
-          <h5>Playtime dolgai</h5>
-          <ul>
-            <li>avg</li>
-            <li>max</li>
-          </ul>
+          <h5>Sum of playerbase actions</h5>
+          <h6>Videos watched:</h6>
+          <%= videosWatched %>
+          <hr>
+          <h6>Achievements unlocked:</h6>
+          <%= videosWatched %>
+          <hr>
+          <h6>Current playtime:</h6>
+          <%= currentPlaytime %>
+
         </div>
       </div>
 

@@ -45,16 +45,16 @@ module.exports = {
       collection: 'pinglog',
       via: 'user'
     },
-    statsLog: {
+/*     statsLog: {
       collection: 'statslog',
       via: 'user'
-    },
+    }, */
     upgradeLog: {
       collection: 'upgradelog',
       via: 'user'
     },
 
-    lastStats: {
+    stats: {
       model: 'statslog'
     }
   },

@@ -57,7 +57,8 @@ module.exports = {
         .populate('investmentLog')
         .populate('gamblingLog')
         .populate('pingLog')
-        .populate('statsLog')
+        //.populate('statsLog')
+        .populate('stats')
         .populate('upgradeLog');
       return res.ok(users);
     }
@@ -152,14 +153,15 @@ module.exports = {
     try {
       const rb = req.body;
       const user = await getMuserFromReq(req);
+      await Statslog.destroyOne({ id: user.stats });
+
       const statsLog = await Statslog.create({
         ...rb,
         user: user.id
       }).fetch();
 
-      await User
-        .update({ id: req.user.id })
-        .set({ lastStats: statsLog.id });
+      await Muser.update({ id: user.id })
+        .set({ stats: statsLog.id });
 
       return res.ok({ user, statsLog });
     }
