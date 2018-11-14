@@ -156,6 +156,11 @@ module.exports = {
         ...rb,
         user: user.id
       }).fetch();
+
+      await User
+        .update({ id: req.user.id })
+        .set({ lastStats: statsLog.id });
+
       return res.ok({ user, statsLog });
     }
     catch (err) {

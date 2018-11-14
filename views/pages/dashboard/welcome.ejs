@@ -1,30 +1,133 @@
 <div id="welcome">
+
   <div class="container">
-    <h1>Welcome!</h1>
-    <hr/>
-    <p>This is a page that only logged-in people can visit. Don't you feel special? Try clicking on a button below to do some things you can't do when you're logged out.</p>
-    <div class="buttons">
-      <a class="btn btn-info" href="/account/profile">Update my email</a>
-      <button class="btn btn-outline-info ml-2" @click="clickOpenDashboardModalButton()">Open a modal</button>
+    <div class="row" id="stats-container">
+
+      <div id="all-users" class="col-md-6">
+        <div class="inner">
+          <h5>Mobile user registration stats</h5>
+          <h6>All registered mobile users</h6>
+          <%= allRegisteredUsers %>
+          <hr>
+          <h6>Mobile users registered this week by day</h6>
+          <%= last7DaysRegisteredUsers %>
+          <hr>
+          <h6>Mobile users registered previous week</h6>
+          <%= previousWeekRegisteredUsers %>
+        </div>
+      </div>
+
+      <div id="gambling" class="col-md-6">
+        <div class="inner">
+          <h5>Gambling stats</h5>
+          <h6>All gambles</h6>
+          <%= allGambles %>
+          <hr>
+          <h6>Gambles this week by day</h6>
+          <%= last7DaysGambles %>
+          <hr>
+          <h6>Gambles previous week</h6>
+          <%= previousWeekGambles %>
+        </div>
+      </div>
+
+
+      <div id="bought-investments" class="col-md-6">
+        <div class="inner">
+          <h5>Investment stats</h5>
+          <h6>All investment purchases</h6>
+          <%= allPurchasedInvestments %>
+          <hr>
+          <h6>Investment purchases this week by day</h6>
+          <%= last7DaysPurchasedInvestments %>
+          <hr>
+          <h6>Investment purchases previous week</h6>
+          <%= previousWeekPurchasedInvestments %>
+
+        </div>
+      </div>
+      <div id="bought-upgrades" class="col-md-6">
+        <div class="inner">
+          <h5>Upgrade stats</h5>
+          <h6>All upgrade purchases</h6>
+          <%= allPurchasedUpgrades %>
+          <hr>
+          <h6>Upgrade purchases this week by day</h6>
+          <%= last7DaysPurchasedUpgrades %>
+          <hr>
+          <h6>Upgrade purchases previous week</h6>
+          <%= previousWeekPurchasedUpgrades %>
+
+        </div>
+      </div>
+
+      <div id="opens-closes" class="col-md-6">
+        <div class="inner">
+          <h5>App open-close stats</h5>
+          <div class="row">
+              <div class="col-md-6">
+                  <h6>All app opens</h6>
+                  <%= allTimeOpens %>
+                  <hr>
+                  <h6>Opens this week by day</h6>
+                  <%= last7DaysOpens %>
+                  <hr>
+                  <h6>Opens previous week</h6>
+                  <%= previousWeekOpens %>
+                </div>
+                <div class="col-md-6">
+                  <h6>All app closes</h6>
+                  <%= allTimeCloses %>
+                  <hr>
+                  <h6>Closes this week by day</h6>
+                  <%= last7DaysCloses %>
+                  <hr>
+                  <h6>Closes previous week</h6>
+                  <%= previousWeekCloses %>
+                </div>
+          </div>
+
+        </div>
+      </div>
+
+
+
+      <div id="money-source" class="col-md-6">
+        <div class="inner">
+          <h5>Money source kördiagram: click/investment/gambling</h5>
+
+
+        </div>
+      </div>
+
+      <div id="click-count" class="col-md-6">
+        <div class="inner">
+          <h5>Játékosok kattintásszáma</h5>
+
+
+        </div>
+      </div>
+
+
+      <div id="playtime" class="col-md-6">
+        <div class="inner">
+          <h5>Playtime dolgai</h5>
+          <ul>
+            <li>avg</li>
+            <li>max</li>
+          </ul>
+        </div>
+      </div>
+      <div id="leaderboard" class="col-md-12">
+          <div class="inner">
+            <h5>Leaderboard</h5>
+
+          </div>
+        </div>
+
     </div>
+
   </div>
 
-
-  <modal class="example-modal" v-if="dashboardModalVisible" @close="closeDashboardModal()" v-cloak>
-    <div class="modal-header">
-      <h2 class="modal-title">Example modal</h2>
-      <p>At your leisure, please peruse this excerpt from a whale of a tale.</p>
-      <hr/>
-      <button type="button" class="modal-close-button" data-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
-      <h5 class="section-heading">Chapter 1: Loomings.</h5>
-      <p>Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation. Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people's hats off—then, I account it high time to get to sea as soon as I can. This is my substitute for pistol and ball. With a philosophical flourish Cato throws himself upon his sword; I quietly take to the ship. There is nothing surprising in this. If they but knew it, almost all men in their degree, some time or other, cherish very nearly the same feelings towards the ocean with me.</p>
-    </div>
-    <div class="modal-footer flex-row-reverse justify-content-between">
-      <button type="button" data-dismiss="modal" class="btn btn-info">Close</button>
-      <button type="button" data-dismiss="modal" class="btn btn-outline-info">Cancel</button>
-    </div>
-  </modal>
 </div>
 <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>

@@ -52,6 +52,10 @@ module.exports = {
     upgradeLog: {
       collection: 'upgradelog',
       via: 'user'
+    },
+
+    lastStats: {
+      model: 'statslog'
     }
   },
 
