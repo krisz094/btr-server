@@ -153,7 +153,7 @@ module.exports = {
     try {
       const rb = req.body;
       const user = await getMuserFromReq(req);
-      await Statslog.destroyOne({ id: user.stats });
+      await Statslog.destroy({ user: user.id });
 
       const statsLog = await Statslog.create({
         ...rb,
