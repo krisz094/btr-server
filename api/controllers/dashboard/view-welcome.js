@@ -68,7 +68,7 @@ const getInvestmentStats = async function () {
 
 const getGamblingStats = async function () {
   const basicStats = await getBasicPropsForEntity(Gamblinglog, 'Gambles');
-  const wonStats = await getBasicPropsForEntity(Gamblinglog, 'GamblesWon' ,{ gamblingWon: true });
+  const wonStats = await getBasicPropsForEntity(Gamblinglog, 'GamblesWon', { gamblingWon: true });
   return Object.assign({}, basicStats, wonStats);
 
 }
@@ -79,10 +79,10 @@ const getUpgradeStats = async function () {
 }
 
 const getPieChartStats = async function () {
-  const gamblingMoney = await Statslog.sum('moneyFromGambling');
-  const clicksMoney = await Statslog.sum('moneyFromClicks');
-  const videosMoney = await Statslog.sum('moneyFromVideos');
-  const investmentsMoney = await Statslog.sum('moneyFromInvestments');
+  const gamblingMoney = 0; // await Statslog.sum('moneyFromGambling');
+  const clicksMoney = 0; // await Statslog.sum('moneyFromClicks');
+  const videosMoney = 0; // await Statslog.sum('moneyFromVideos');
+  const investmentsMoney = 0; // await Statslog.sum('moneyFromInvestments');
   return {
     gamblingMoney,
     clicksMoney,
@@ -92,9 +92,9 @@ const getPieChartStats = async function () {
 }
 
 const getPlaytimeStats = async function () {
-  const videosWatched = await Statslog.sum('videosWatched');
-  const achievementsUnlocked = await Statslog.sum('achievementsUnlocked');
-  const currentPlaytime = await Statslog.sum('currentPlaytime');
+  const videosWatched = 0; // await Statslog.sum('videosWatched');
+  const achievementsUnlocked = 0; // await Statslog.sum('achievementsUnlocked');
+  const currentPlaytime = 0; // await Statslog.sum('currentPlaytime');
   return {
     videosWatched,
     achievementsUnlocked,
@@ -117,31 +117,37 @@ module.exports = {
       viewTemplatePath: 'pages/dashboard/welcome',
       description: 'Display the welcome page for authenticated users.'
     },
+    invalid: {
+      viewTemplatePath: '500',
+      description: 'Something went wrong.'
+    }
 
   },
 
 
   fn: async function (inputs, exits) {
-    let sendData = {};
+    try {
+      let sendData = {};
 
-    const pinglogStats = await getPinglogStats();
-    const muserStats = await getMuserStats();
-    const investmentStats = await getInvestmentStats();
-    const gamblingStats = await getGamblingStats();
-    const upgradeStats = await getUpgradeStats();
-    const pieChartStats = await getPieChartStats();
-    const playtimeStats = await getPlaytimeStats();
-    Object.assign(sendData, pinglogStats);
-    Object.assign(sendData, muserStats);
-    Object.assign(sendData, investmentStats);
-    Object.assign(sendData, gamblingStats);
-    Object.assign(sendData, upgradeStats);
-    Object.assign(sendData, pieChartStats);
-    Object.assign(sendData, playtimeStats);
-
-    return exits.success(sendData);
-
+      const pinglogStats = await getPinglogStats();
+      const muserStats = await getMuserStats();
+      const investmentStats = await getInvestmentStats();
+      const gamblingStats = await getGamblingStats();
+      const upgradeStats = await getUpgradeStats();
+      const pieChartStats = await getPieChartStats();
+      const playtimeStats = await getPlaytimeStats();
+      Object.assign(sendData, pinglogStats);
+      Object.assign(sendData, muserStats);
+      Object.assign(sendData, investmentStats);
+      Object.assign(sendData, gamblingStats);
+      Object.assign(sendData, upgradeStats);
+      Object.assign(sendData, pieChartStats);
+      Object.assign(sendData, playtimeStats);
+      return exits.success(sendData);
+    }
+    catch (err) {
+      sails.log.error(err);
+      return exits.invalid();
+    }
   }
-
-
 };

@@ -13,7 +13,7 @@
     "google-auth-library": "^2.0.1",
     "jsonwebtoken": "^8.3.0",
     "machinepack-emailaddresses": "^0.4.0",
-    "sails": "^1.0.2",
+    "sails": "^1.1.0",
     "sails-hook-apianalytics": "^2.0.0",
     "sails-hook-organics": "^0.13.0",
     "sails-hook-orm": "^2.0.0-16",

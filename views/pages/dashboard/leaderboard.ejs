@@ -1,0 +1,123 @@
+<div id="leaderboard">
+
+  <div class="container">
+    <h1>Leaderboard</h1>
+    <div class="row">
+      <% for (let i of top100) { %>
+      <div class="col-md-4 leaderboard-box">
+        <div class="inner">
+          <div class="leaderboard-stat-row">
+            <div class="stat-key">
+              E-mail
+            </div>
+            <div class="stat-value">
+              <%= i.user.email %>
+            </div>
+          </div>
+          <hr>
+          <div class="leaderboard-stat-row">
+            <div class="stat-key">
+              Total Money Collected
+            </div>
+            <div class="stat-value">
+              <%= i.totalMoneyCollected %>
+            </div>
+          </div>
+          <div class="leaderboard-stat-row">
+            <div class="stat-key">
+              Current Money
+            </div>
+            <div class="stat-value">
+              <%= i.currentMoney %>
+            </div>
+          </div>
+          <div class="leaderboard-stat-row">
+            <div class="stat-key">
+              Playtime
+            </div>
+            <div class="stat-value">
+              <%= i.currentPlaytime %>
+            </div>
+          </div>
+          <div class="leaderboard-stat-row">
+            <div class="stat-key">
+              Total clicks
+            </div>
+            <div class="stat-value">
+              <%= i.currentClicks %>
+            </div>
+          </div>
+          <div class="leaderboard-stat-row">
+            <div class="stat-key">
+              Achievements unlocked
+            </div>
+            <div class="stat-value">
+              <%= i.achievementsUnlocked %>
+            </div>
+          </div>
+          <div class="leaderboard-stat-row">
+            <div class="stat-key">
+              Total investment levels
+            </div>
+            <div class="stat-value">
+              <%= i.totalInvestmentLevels %>
+            </div>
+          </div>
+          <div class="leaderboard-stat-row">
+            <div class="stat-key">
+              Upgrades bought
+            </div>
+            <div class="stat-value">
+              <%= i.upgradesBought %>
+            </div>
+          </div>
+          <div class="leaderboard-stat-row">
+            <div class="stat-key">
+              Money from gambling
+            </div>
+            <div class="stat-value">
+              <%= i.moneyFromGambling %>
+            </div>
+          </div>
+          <div class="leaderboard-stat-row">
+            <div class="stat-key">
+              Money from investments
+            </div>
+            <div class="stat-value">
+              <%= i.moneyFromInvestments %>
+            </div>
+          </div>
+          <div class="leaderboard-stat-row">
+            <div class="stat-key">
+              Money from clicks
+            </div>
+            <div class="stat-value">
+              <%= i.moneyFromClicks %>
+            </div>
+          </div>
+          <div class="leaderboard-stat-row">
+            <div class="stat-key">
+              Money from videos
+            </div>
+            <div class="stat-value">
+              <%= i.moneyFromVideos %>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+
+            <div class="col-md-6">
+              <button class="btn btn-outline-info btn-block">View Details</button>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-danger btn-block">Ban</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+
+</div>
+<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
