@@ -79,10 +79,17 @@ const getUpgradeStats = async function () {
 }
 
 const getPieChartStats = async function () {
-  const gamblingMoney = 0; // await Statslog.sum('moneyFromGambling');
-  const clicksMoney = 0; // await Statslog.sum('moneyFromClicks');
-  const videosMoney = 0; // await Statslog.sum('moneyFromVideos');
-  const investmentsMoney = 0; // await Statslog.sum('moneyFromInvestments');
+  let gamblingMoney = 0; // await Statslog.sum('moneyFromGambling');
+  let clicksMoney = 0; // await Statslog.sum('moneyFromClicks');
+  let videosMoney = 0; // await Statslog.sum('moneyFromVideos');
+  let investmentsMoney = 0; // await Statslog.sum('moneyFromInvestments');
+  await Lateststats.stream()
+    .eachRecord((stat) => {
+      gamblingMoney += stat.moneyFromGambling;
+      clicksMoney += stat.moneyFromClicks;
+      videosMoney += stat.moneyFromVideos;
+      investmentsMoney += stat.moneyFromInvestments;
+    });
   return {
     gamblingMoney,
     clicksMoney,
