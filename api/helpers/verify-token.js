@@ -59,7 +59,7 @@ module.exports = {
 			if (!token) return exits.invalid()
 			// if there is something, attempt to parse it as a JWT token
 			return jwt.verify(token, sails.config.JWTsecret, async function(err, payload) {
-				sails.log(err, payload);
+				//sails.log(err, payload);
 				if (err || !payload.user) return exits.invalid()
 				var user = await Muser.findOne(payload.user)
 				if (!user) return exits.invalid()

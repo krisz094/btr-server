@@ -18,14 +18,14 @@ module.exports = {
   tokenSignIn: async (req, res) => {
     try {
       const idToken = req.body.idToken;
-      sails.log(idToken);
+      //sails.log(idToken);
       const client = new OAuth2Client(CLIENT_ID);
       const ticket = await client.verifyIdToken({
         idToken,
         audience: CLIENT_ID
       });
       const payload = ticket.getPayload();
-      sails.log(JSON.stringify(payload))
+      //sails.log(JSON.stringify(payload))
       const gEmail = payload.email;
       const gUniqueId = payload.sub;
 

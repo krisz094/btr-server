@@ -4,7 +4,7 @@
     <h1>Leaderboard</h1>
     <div class="row">
       <% for (let i of top100) { %>
-      <div class="col-md-4 leaderboard-box">
+      <div class="col-md-6 col-lg-4 leaderboard-box">
         <div class="inner">
           <div class="leaderboard-stat-row">
             <div class="stat-key">
@@ -17,7 +17,7 @@
           <hr>
           <div class="leaderboard-stat-row">
             <div class="stat-key">
-              Total Money Collected
+              Collected Money
             </div>
             <div class="stat-value">
               <%= i.totalMoneyCollected %>
