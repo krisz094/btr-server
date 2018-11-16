@@ -55,7 +55,18 @@ const WELCOME_CHART_FNS = {
         ['Days before', varexplanation]
       ];
       SAILS_LOCALS[varname].forEach((day, idx) => {
-        data.push([6 - idx + ' days ago', day])
+        var ago = 6 - idx;
+        var res = "";
+        if (ago == 0) {
+          res = "Today";
+        }
+        else if (ago == 1) {
+          res = "Yesterday";
+        }
+        else {
+          res = ago + " days ago";
+        }
+        data.push([res, day])
       })
 
       data = google.visualization.arrayToDataTable(data);

@@ -41,7 +41,7 @@ module.exports = {
 
       stats.forEach(statlog => {
         for (i in statlog) {
-          if (!_.contains(['createdAt', 'updatedAt', 'user'], i)) {
+          if (!_.contains(['createdAt', 'updatedAt', 'user', 'id'], i)) {
             if (!(i in arrays)) {
               arrays[i] = [];
             }
