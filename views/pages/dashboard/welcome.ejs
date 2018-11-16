@@ -1,4 +1,4 @@
-<div id="dashboard">
+<div id="welcome">
 
   <div class="container">
     <h1>Dashboard</h1>
@@ -8,13 +8,15 @@
         <div class="inner">
           <h5>Mobile user registration stats</h5>
           <h6>All registered mobile users</h6>
-          <%= allRegisteredUsers %>
+          <%= allRegisteredUsers %> users
           <hr>
           <h6>Mobile users registered this week by day</h6>
-          <%= last7DaysRegisteredUsers %>
+          <div id="last7DaysRegisteredUsers-chart">
+
+          </div>
           <hr>
           <h6>Mobile users registered previous week</h6>
-          <%= previousWeekRegisteredUsers %>
+          <%= previousWeekRegisteredUsers %> users
         </div>
       </div>
 
@@ -24,23 +26,27 @@
           <div class="row">
             <div class="col-md-6">
               <h6>All gambles</h6>
-              <%= allGambles %>
+              <%= allGambles %> gambles
               <hr>
               <h6>Gambles this week by day</h6>
-              <%= last7DaysGambles %>
+              <div id="last7DaysGambles-chart">
+
+              </div>
               <hr>
               <h6>Gambles previous week</h6>
-              <%= previousWeekGambles %>
+              <%= previousWeekGambles %> gambles
             </div>
             <div class="col-md-6">
               <h6>All gambles won</h6>
-              <%= allGamblesWon %>
+              <%= allGamblesWon %> gambles
               <hr>
               <h6>Gambles won this week by day</h6>
-              <%= last7DaysGamblesWon %>
+              <div id="last7DaysGamblesWon-chart">
+
+              </div>
               <hr>
               <h6>Gambles won previous week</h6>
-              <%= previousWeekGamblesWon %>
+              <%= previousWeekGamblesWon %> gambles
             </div>
           </div>
         </div>
@@ -51,13 +57,13 @@
         <div class="inner">
           <h5>Investment stats</h5>
           <h6>All investment purchases</h6>
-          <%= allPurchasedInvestments %>
+          <%= allPurchasedInvestments %> investments
           <hr>
           <h6>Investment purchases this week by day</h6>
-          <%= last7DaysPurchasedInvestments %>
+          <div id="last7DaysPurchasedInvestments-chart"></div>
           <hr>
           <h6>Investment purchases previous week</h6>
-          <%= previousWeekPurchasedInvestments %>
+          <%= previousWeekPurchasedInvestments %> investments
 
         </div>
       </div>
@@ -65,13 +71,15 @@
         <div class="inner">
           <h5>Upgrade stats</h5>
           <h6>All upgrade purchases</h6>
-          <%= allPurchasedUpgrades %>
+          <%= allPurchasedUpgrades %> upgrades
           <hr>
           <h6>Upgrade purchases this week by day</h6>
-          <%= last7DaysPurchasedUpgrades %>
+          <div id="last7DaysPurchasedUpgrades-chart">
+
+          </div>
           <hr>
           <h6>Upgrade purchases previous week</h6>
-          <%= previousWeekPurchasedUpgrades %>
+          <%= previousWeekPurchasedUpgrades %> upgrades
 
         </div>
       </div>
@@ -82,23 +90,23 @@
           <div class="row">
             <div class="col-md-6">
               <h6>All app opens</h6>
-              <%= allTimeOpens %>
+              <%= allTimeOpens %> opens
               <hr>
               <h6>Opens this week by day</h6>
-              <%= last7DaysOpens %>
+              <div id="last7DaysOpens-chart"></div>
               <hr>
               <h6>Opens previous week</h6>
-              <%= previousWeekOpens %>
+              <%= previousWeekOpens %> opens
             </div>
             <div class="col-md-6">
               <h6>All app closes</h6>
-              <%= allTimeCloses %>
+              <%= allTimeCloses %> closes
               <hr>
               <h6>Closes this week by day</h6>
-              <%= last7DaysCloses %>
+              <div id="last7DaysCloses-chart"></div>
               <hr>
               <h6>Closes previous week</h6>
-              <%= previousWeekCloses %>
+              <%= previousWeekCloses %> closes
             </div>
           </div>
 
@@ -109,52 +117,25 @@
 
       <div id="money-source" class="col-md-6">
         <div class="inner">
-          <h5>Money source kördiagram: click/investment/gambling</h5>
-          <ul>
-            <li>
-              Gambling:
-              <%= gamblingMoney %>
-            </li>
-            <li>
-              Clicks:
-              <%= clicksMoney %>
-            </li>
-            <li>
-              Videos:
-              <%= videosMoney %>
-            </li>
-            <li>
-              Investments:
-              <%= investmentsMoney %>
-            </li>
-          </ul>
-
+          <h5>How people make money</h5>
+          <div id="money-pie"></div>
         </div>
       </div>
 
-      <!-- <div id="click-count" class="col-md-6">
-        <div class="inner">
-          <h5>Investment max levels</h5>
-          <h6>TODO</h6>
-
-        </div>
-      </div> -->
-
-
-      <!-- <div id="playtime" class="col-md-6">
+      <div id="playtime" class="col-md-6">
         <div class="inner">
           <h5>Sum of playerbase actions</h5>
           <h6>Videos watched:</h6>
-          <%= videosWatched %>
+          <%= videosWatched %> videos
           <hr>
           <h6>Achievements unlocked:</h6>
-          <%= videosWatched %>
+          <%= videosWatched %> achievements
           <hr>
           <h6>Current playtime:</h6>
-          <%= currentPlaytime %>
+          <%= currentPlaytime %> seconds
 
         </div>
-      </div> -->
+      </div>
 
     </div>
 

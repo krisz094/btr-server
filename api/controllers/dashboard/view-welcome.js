@@ -84,7 +84,7 @@ const getPieChartStats = async function () {
   let videosMoney = 0; // await Statslog.sum('moneyFromVideos');
   let investmentsMoney = 0; // await Statslog.sum('moneyFromInvestments');
   await Lateststats.stream()
-    .eachRecord((stat) => {
+    .eachRecord(stat => {
       gamblingMoney += stat.moneyFromGambling;
       clicksMoney += stat.moneyFromClicks;
       videosMoney += stat.moneyFromVideos;
@@ -99,9 +99,15 @@ const getPieChartStats = async function () {
 }
 
 const getPlaytimeStats = async function () {
-  const videosWatched = 0; // await Statslog.sum('videosWatched');
-  const achievementsUnlocked = 0; // await Statslog.sum('achievementsUnlocked');
-  const currentPlaytime = 0; // await Statslog.sum('currentPlaytime');
+  let videosWatched = 0; // await Statslog.sum('videosWatched');
+  let achievementsUnlocked = 0; // await Statslog.sum('achievementsUnlocked');
+  let currentPlaytime = 0; // await Statslog.sum('currentPlaytime');
+  await Lateststats.stream()
+    .eachRecord(stat => {
+      videosWatched += stat.videosWatched;
+      achievementsUnlocked += stat.achievementsUnlocked;
+      currentPlaytime += stat.currentPlaytime;
+    });
   return {
     videosWatched,
     achievementsUnlocked,

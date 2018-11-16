@@ -1,0 +1,17 @@
+<div id="userdetails">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>
+          User <%= user.email %>
+        </h1>
+      </div>
+
+      <div class="col-12">
+        <%= JSON.stringify(arrays) %>
+      </div>
+
+    </div>
+  </div>
+</div>
+<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
