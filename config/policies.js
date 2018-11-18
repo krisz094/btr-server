@@ -24,6 +24,10 @@ module.exports.policies = {
     register: true,
     list: true,
     tokenSignIn: true
-  }
+  },
+
+  ClientinfoController: {
+    '*': 'isJWTAuthenticated'
+  },
 
 };

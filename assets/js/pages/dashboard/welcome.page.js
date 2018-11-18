@@ -41,7 +41,7 @@ const WELCOME_CHART_FNS = {
       },
       animation: {
         startup: true,
-        duration: 800,
+        duration: 1000,
         easing: 'inAndOut'
       },
       legend: { position: "none" },
@@ -82,6 +82,7 @@ const WELCOME_CHART_FNS = {
           easing: 'inAndOut'
         },
         legend: { position: "none" },
+        width: '100%'
       };
       var chart = new google.visualization.ColumnChart(document.getElementById(varname + '-chart'));
       chart.draw(data, options);

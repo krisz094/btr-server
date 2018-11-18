@@ -1,20 +1,17 @@
 module.exports = {
 
-
   friendlyName: 'View user detail page',
-
 
   description: 'Display the stats of a selected user.',
 
   inputs: {
     userId: {
       description: 'Id of the displayed user',
-      type: 'number'
+      type: 'string'
     }
   },
 
   exits: {
-
     success: {
       viewTemplatePath: 'pages/dashboard/userdetails',
       description: 'Display the user stats page for authenticated users.'
@@ -23,9 +20,7 @@ module.exports = {
       viewTemplatePath: '500',
       description: 'Something went wrong.'
     }
-
   },
-
 
   fn: async function (inputs, exits) {
     try {
@@ -41,7 +36,7 @@ module.exports = {
 
       stats.forEach(statlog => {
         for (i in statlog) {
-          if (!_.contains(['createdAt', 'updatedAt', 'user', 'id'], i)) {
+          if (!_.contains(['updatedAt', 'user', 'id'], i)) {
             if (!(i in arrays)) {
               arrays[i] = [];
             }

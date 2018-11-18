@@ -21,7 +21,7 @@
               Collected Money
             </div>
             <div class="stat-value">
-              <%= i.totalMoneyCollected %>
+              <%= Math.round(i.totalMoneyCollected) %>$
             </div>
           </div>
           <div class="leaderboard-stat-row">
@@ -29,7 +29,7 @@
               Current Money
             </div>
             <div class="stat-value">
-              <%= i.currentMoney %>
+              <%= Math.round(i.currentMoney) %>$
             </div>
           </div>
           <div class="leaderboard-stat-row">
@@ -37,7 +37,7 @@
               Playtime
             </div>
             <div class="stat-value">
-              <%= i.currentPlaytime %>
+              <%= i.currentPlaytime %> seconds
             </div>
           </div>
           <div class="leaderboard-stat-row">
@@ -45,7 +45,7 @@
               Total clicks
             </div>
             <div class="stat-value">
-              <%= i.currentClicks %>
+              <%= i.currentClicks %> clicks
             </div>
           </div>
           <div class="leaderboard-stat-row">
@@ -53,7 +53,7 @@
               Achievements unlocked
             </div>
             <div class="stat-value">
-              <%= i.achievementsUnlocked %>
+              <%= i.achievementsUnlocked %> achievements
             </div>
           </div>
           <div class="leaderboard-stat-row">
@@ -61,7 +61,7 @@
               Total investment levels
             </div>
             <div class="stat-value">
-              <%= i.totalInvestmentLevels %>
+              <%= i.totalInvestmentLevels %> investments
             </div>
           </div>
           <div class="leaderboard-stat-row">
@@ -69,7 +69,7 @@
               Upgrades bought
             </div>
             <div class="stat-value">
-              <%= i.upgradesBought %>
+              <%= i.upgradesBought %> upgrades
             </div>
           </div>
           <div class="leaderboard-stat-row">
@@ -77,7 +77,7 @@
               Money from gambling
             </div>
             <div class="stat-value">
-              <%= i.moneyFromGambling %>
+              <%= Math.round(i.moneyFromGambling) %>$
             </div>
           </div>
           <div class="leaderboard-stat-row">
@@ -85,7 +85,7 @@
               Money from investments
             </div>
             <div class="stat-value">
-              <%= i.moneyFromInvestments %>
+              <%= Math.round(i.moneyFromInvestments) %>$
             </div>
           </div>
           <div class="leaderboard-stat-row">
@@ -93,7 +93,7 @@
               Money from clicks
             </div>
             <div class="stat-value">
-              <%= i.moneyFromClicks %>
+              <%= Math.round(i.moneyFromClicks) %>$
             </div>
           </div>
           <div class="leaderboard-stat-row">
@@ -101,7 +101,7 @@
               Money from videos
             </div>
             <div class="stat-value">
-              <%= i.moneyFromVideos %>
+              <%= Math.round(i.moneyFromVideos) %>$
             </div>
           </div>
           <hr>
